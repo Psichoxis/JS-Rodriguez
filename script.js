@@ -70,6 +70,10 @@ let eventClick = function(event){
         <input type="submit" id="boton2" placeholder="Enviar"></input>
         `
     const button = document.getElementById("boton")
+    Swal.fire({
+        icon: 'success',
+        title: 'Datos enviados correctamente.',
+      })
     clicked = 1
     if(clicked == 1) {
         form = removeEventListener('submit', eventClick)
@@ -78,8 +82,11 @@ let eventClick = function(event){
 let eventClick2 = function(evento){
     evento.preventDefault()
     let tabla = document.getElementById('tabla')
-    
-    const button = document.getElementById("boton2")
+    Swal.fire({
+        icon: 'success',
+        title: 'Datos enviados correctamente.',
+      })
+    const button2 = document.getElementById("boton2")
     tabla.innerHTML += `
         <h5>El promedio es: ${prom}.</h5>
         <h5>Hay ${aprobados} aprobado/s.</h5>
@@ -95,6 +102,14 @@ let eventClick2 = function(evento){
         form = removeEventListener('submit', eventClick2)
     }
 }
+
+/* let boton2 = document.getElementById("boton2")
+boton2.addEventListener('click', () => {
+    Swal.fire({
+        icon: 'success',
+        title: 'Datos enviados correctamente.',
+      })
+}) */
 
 // FIN FUNCIONES
 
