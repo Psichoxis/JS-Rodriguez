@@ -58,16 +58,18 @@ function carreraCase(carrera){
 let eventClick = function(event){
     event.preventDefault()
     profe = document.getElementById('name').value
-    cant = document.getElementById('cant').value
     let nuevoForm = document.getElementById('nuevoForm')
-    for(let i=1; i<=cant ;i++) {
-        nuevoForm.innerHTML += `
-            <input type="text" id="nombre${i}" placeholder="Ingrese el nombre del alumno" required>
-            <input type="text" id="nota${i}" placeholder="Ingrese la nota nº ${i}" required>
-        `
-    }
+    fetch('alumnos.json')
+    .then(response => response.json())
+    .then(alumnos => {
+        alumnos.forEach(alumno =>{
+            nuevoForm.innerHTML += `
+            <b>${alumno.apellido}</b>, <i>${alumno.nombre}</i>:
+            <input type="text" id="nota${alumno.id}" placeholder="Ingrese la nota nº ${alumno.id}" required>        `
+        })
+    })
     nuevoForm.innerHTML += `
-        <input type="submit" id="boton2" placeholder="Enviar"></input>
+        <input type="submit" id="boton2" placeholder="Enviar Notas"></input>
         `
     const button = document.getElementById("boton")
     Swal.fire({
